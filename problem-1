@@ -1,0 +1,32 @@
+//Time complexity :O(logn) : Each time we apply the formula n is reduced by half. Thus we need at most O(logn) computations to get the result.
+//space : O(logn) in recursive stackframe
+class Solution {
+    public double myPow(double x, int n) {
+        //when power is positive
+        if(n>0)
+        {
+          if(n==0)
+                return 1;
+           double t1= myPow(x,n/2);
+       
+            if(n%2==0)
+                return t1*t1;
+            else
+                return t1*t1*x;
+            
+        }
+        //negative power
+        else
+        {
+            //1. check if n is 0
+            if(n==0)
+                return 1;
+           double t1= myPow(x,n/2);
+           
+             if(n%2==0)
+                return t1*t1;
+            else
+                return t1*t1*1/x;
+        }
+    }
+    
