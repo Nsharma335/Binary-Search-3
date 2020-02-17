@@ -1,0 +1,27 @@
+//idea is since the array is sorted so either the low has grtr diff or the high has, whichever has grtr diff than other, move pointers, maintain window of k between low and high
+//time: O(n) since traversing from low to high
+//space: O(k) storing k elements in result 
+class Solution {
+    public List<Integer> findClosestElements(int[] arr, int k, int x) {
+        int l=0;
+        int h=arr.length-1;
+        List<Integer> res=new ArrayList<>();
+        while(l<h && h-l>=k)
+        {
+            //if low has greater differnce then low ++ because we dont want to consider that element;
+            if(Math.abs(x-arr[l])>Math.abs(x-arr[h]))
+            {
+                l++;
+            }
+            else
+            {
+                h--;
+            }
+        }
+        for(int i=l;i<=h;i++)
+        {
+            res.add(arr[i]);
+        }
+        return res;
+    }
+}
